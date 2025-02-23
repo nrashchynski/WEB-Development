@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.header, .footer {
+    background-color: #99CCFF;
+    color: blue;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+.main {
+    display: flex;
+    flex: 1;
+}
+.menu {
+    background-color: #FFFFCC;
+    width: 250px;
+    padding: 10px;
+}
+.content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 10px;
+}

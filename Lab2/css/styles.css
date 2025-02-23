@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    height: 100vh;
+}
+td {
+    border: 1px solid black;
+    padding: 10 px;
+}
+.header, .footer {
+    background-color: #99CCFF;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+.menu {
+    background-color: #FFFFCC;
+    width: 250px;
+    vertical-align: top;
+}
+.content {
+    width: auto;
+    vertical-align: top;
+}
