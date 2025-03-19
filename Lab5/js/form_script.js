@@ -45,13 +45,14 @@ function createForm(formArray, formID) {
     });
 }
 
+
 var FormA = [
     {label: 'Название компании:', elemtype: 'text', name: 'company', required:'true'},
     {label: 'Год основания:', elemtype: 'number', name: 'year', required:'true', min: 1900}, 
     {label: 'Страна:', elemtype: 'text', name:'country', required:true},
     {label: 'Количество самолетов:', elemtype:'number', name:'planes', required: true, min: 1},
     {label: 'Разрешить отзывы:', elemtype: 'checkbox', name:'enablecomments'},
-    {label: 'Отправить:', elemtype: 'button', value: 'Добавить' }
+    {label: 'Отправить:', elemtype: 'button', value: 'Отослать' }
 ];
 
 // label: текстовая подпись перед полем ввода
@@ -64,9 +65,21 @@ function validateField(input) {
 
     if (!value) {
         errorSpan.textContent = "Поле обязательно!";
-    }
-    else if(input.type === "number" && input.min && value < input.min) {
-        errorSpan.textContent = `Минимальное значение: ${input.min}`;
+    } 
+    else if(input.type === "number" && input.min) {
+        let numMin = parseInt(input.min, 10);
+        let numVal = parseInt(value, 10);
+
+        if (isNaN(numVal)) {
+            errorSpan.textContent = "Введите корректное число!";
+        }
+
+        if (numVal < numMin) {
+            errorSpan.textContent = `Минимальное значение: ${input.min}`;
+        }
+        else {
+            errorSpan.textContent = "";
+        }
     }
     else {
         errorSpan.textContent = "";
@@ -78,7 +91,7 @@ function validateForm() {
     let isValid = true;
 
 
-    form.querySelectorAll("input[required]").forEach(input => {   // нахоит все поля которые нельзя оставлять пустыми
+    form.querySelectorAll("input[required]").forEach(input => { 
         validateField(input);
         if (document.getElementById("error-" + input.name).textContent !== "") {
             isValid = false;
